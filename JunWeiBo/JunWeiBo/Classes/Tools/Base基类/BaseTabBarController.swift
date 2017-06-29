@@ -47,14 +47,14 @@ class BaseTabBarController: UITabBarController {
             for dict in dictArray  as! [[String:String]]
             {
                 // 由于addChildVC方法参数不能为nil, 但是字典中取出来的值可能是nil, 所以需要加上!
-                addChildViewController(vcName: dict["vcName"]!, title: dict["title"]! as NSString, imageName: dict["imageName"]!)
+                addChildViewController(dict["vcName"]!, title: dict["title"]! as NSString, imageName: dict["imageName"]!)
             }
         }catch{
-            addChildViewController(vcName: "HomeTableController", title: "首页", imageName: "tabbar_home")
-            addChildViewController(vcName: "MessageTableController", title: "消息", imageName: "tabbar_message_center")
-            addChildViewController(vcName: "PublishTableController", title: "", imageName: "")
-            addChildViewController(vcName: "SearchTableController", title: "发现", imageName: "tabbar_discover")
-            addChildViewController(vcName: "MineTableViewController", title: "我", imageName: "tabbar_profile")
+            addChildViewController("HomeTableController", title: "首页", imageName: "tabbar_home")
+            addChildViewController("MessageTableController", title: "消息", imageName: "tabbar_message_center")
+            addChildViewController("PublishTableController", title: "", imageName: "")
+            addChildViewController("SearchTableController", title: "发现", imageName: "tabbar_discover")
+            addChildViewController("MineTableViewController", title: "我", imageName: "tabbar_profile")
 
         }
     }
@@ -66,7 +66,7 @@ class BaseTabBarController: UITabBarController {
      :param: title           初始化的标题
      :param: imageName       初始化的图片
      */
-    func addChildViewController(vcName: String, title:NSString, imageName:String) {
+    func addChildViewController(_ vcName: String, title:NSString, imageName:String) {
         // 0.动态获取命名空间
         let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         print(namespace)
